@@ -42,7 +42,15 @@ E;
         echo '<h4>Dodawanie nowego użytkownika</h4>';
         echo <<< ADDUSER
           <form action="./scripts/add_user.php" method="post">
-            <input type="text" name="city_id" value="1"><br><br>
+            <select name="city_id">
+ADDUSER;
+        $sql="SELECT * FROM `cities`";
+        $result=$conn->query($sql);
+        while ($city=$result->fetch_assoc()) {
+          echo "<option value=\"$city[id]\">$city[id]</option>";
+        }
+        echo <<< ADDUSER
+            </select><br><br>
             <input type="text" name="name" placeholder="Podaj imię"><br><br>
             <input type="text" name="surname" placeholder="Podaj nazwisko"><br><br>
             <input type="submit" value="Dodaj użytkownika"><br><br>
@@ -52,5 +60,6 @@ ADDUSER;
         echo '<a href="./4_table_insert_delete.php?adduser=1">Dodaj użytkownika</a>';
       }
      ?>
+      
   </body>
  </html>
