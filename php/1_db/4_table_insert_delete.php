@@ -47,7 +47,7 @@ ADDUSER;
         $sql="SELECT * FROM `cities`";
         $result=$conn->query($sql);
         while ($city=$result->fetch_assoc()) {
-          echo "<option value=\"$city[id]\">$city[id]</option>";
+          echo "<option value=\"$city[id]\">$city[city]</option>";
         }
         echo <<< ADDUSER
             </select><br><br>
