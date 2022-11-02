@@ -1,18 +1,20 @@
 <?php
     session_start();
-    if (!empty($_POST)) {
+    if (isset($_POST)) {
+        foreach ($_POST as $value) {
+            if (empty($value)) {
+                header('location: ../4_table_insert_delete.php');
+                exit();
+            }
+        }
         require_once('./connect.php');
-        $sql="INSERT INTO `users` (`id`, `city_id`, `name`, `surname`, `created_at`) VALUES (NULL, '1', 'eryk', 'szymanski', current_timestamp());";
+        $sql="INSERT INTO `users` (`id`, `city_id`, `name`, `surname`, `created_at`) VALUES (NULL, '1', '$_POST[name]', '$_POST[surname]', current_timestamp());";
         $conn->query($sql);
         if ($conn->affected_rows) {
-            // echo "ok: $conn->affected_rows";
-            $_SESSION['info'] = "Prawidłowo usunięto rekord o id=$_GET[userid]";
+            $_SESSION['info'] = "Prawidłowo dodano rekord";
         } else {
-            // echo "error $conn->affected_rows";
-            $_SESSION['info'] = "Nie usunięto rekordu o id=$_GET[userid]";
+            $_SESSION['info'] = "Nie dodano rekordu";
         }
-    } else {
-
     }
-    header('location: ../4_table__insert_delete.php')
+    header('location: ../4_table_insert_delete.php')
 ?>
