@@ -14,5 +14,5 @@
             $_SESSION['info'] = "Nie usunięto rekordu o id=$_GET[userid]";
         }
     }
-    header('location: ../4_table_insert_delete.php')
+    header('location: ../5_table_update_insert_delete.php')
 ?>
