@@ -8,12 +8,12 @@
             }
         }
         require_once('./connect.php');
-        $sql="INSERT INTO `users` (`id`, `city_id`, `name`, `surname`, `created_at`) VALUES (NULL, '$_POST[city_id]', '$_POST[name]', '$_POST[surname]', current_timestamp());";
+        $sql="UPDATE `users` SET `city_id` = '$_POST[city_id]', `name` = '$_POST[name]', `surname` = '$_POST[surname]' WHERE `users`.`id` = $_SESSION[updateid]";
         $conn->query($sql);
         if ($conn->affected_rows) {
-            $_SESSION['info'] = "Prawidłowo dodano rekord";
+            $_SESSION['info'] = "Prawidłowo zaktualizowano rekord";
         } else {
-            $_SESSION['info'] = "Nie dodano rekordu";
+            $_SESSION['info'] = "Nie zaktualizowano rekordu";
         }
     }
     header('location: ../5_table_update_insert_delete.php')

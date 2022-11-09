@@ -34,7 +34,7 @@
           <td>$user[city]</td>
           <td>$user[created_at]</td>
           <td><a href="./scripts/delete_user.php?userid=$user[id]">Usuń</a></td>
-          <td><a href="./scripts/5_table_update_insert_delete.php?updateuserid=$user[id]">Aktualizuj</a></td>
+          <td><a href="./5_table_update_insert_delete.php?updateuserid=$user[id]">Aktualizuj</a></td>
         </tr>
 E;
       }
@@ -58,11 +58,39 @@ ADDUSER;
           </form>
 ADDUSER;
       } else {
-        echo '<a href="./4_table_insert_delete.php?adduser=1">Dodaj użytkownika</a>';
+        echo '<a href="./5_table_update_insert_delete.php?adduser=1">Dodaj użytkownika</a>';
       }
 
       if(!empty($_GET['updateuserid'])) {
         echo "<h4>Aktualizacja użytkownika o id=$_GET[updateuserid]</h4>";
+        $sql="SELECT * FROM `users` WHERE `id`=$_GET[updateuserid]";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+        // echo "$user[city_id]";
+
+        echo <<< UPDATEUSER
+          <form action="./scripts/update_user.php" method="post">
+            <select name="city_id">
+UPDATEUSER;
+        // $sql="SELECT * FROM `cities` WHERE `id`=$user[city_id]";
+        $sql="SELECT * FROM `cities`";
+        $result=$conn->query($sql);
+        while ($city=$result->fetch_assoc()) {
+          if($city['id'] == $user['city_id']) {
+            echo "<option value=\"$city[id]\" selected>$city[city]</option>";
+          } else {
+            echo "<option value=\"$city[id]\">$city[city]</option>";
+          }
+        }
+        echo <<< UPDATEUSER
+            </select><br><br>
+            <input type="text" name="name" value="$user[name]"><br><br>
+            <input type="text" name="surname" value="$user[surname]"><br><br>
+            <input type="submit" value="Aktualizuj użytkownika"><br><br>
+          </form>
+UPDATEUSER;
+
+        $_SESSION['updateid'] = $user['id'];
       }
      ?>
       
