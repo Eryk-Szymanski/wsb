@@ -24,6 +24,7 @@ while True:
     print('3) Wyświetl zawartość listy')
     print('4) Wyczyść zawartość listy')
     print('5) Znajdź element w liście, który poda użytkownik (wyświetl czy jest dodany do listy)')
+    print('6) Zakończ')
     choice = input('Twój wybór: ')
 
     match choice:
@@ -42,6 +43,8 @@ while True:
                 print('Znaleziono podany element na miejscu ' + str(country.index(find)))
             else:
                 print('Podanego elementu nie ma w liście')
+        case '6':
+            break
         case _:
             break
 
