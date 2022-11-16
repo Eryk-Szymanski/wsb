@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Registration Page (v2)</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../AdminLTE/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../AdminLTE/dist/css/adminlte.min.css">
+  <?php
+    require_once '../style/style.css';
+  ?>
   
 </head>
 <body class="hold-transition register-page">
@@ -85,7 +80,7 @@
         </a>
       </div>
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      <a href="../" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

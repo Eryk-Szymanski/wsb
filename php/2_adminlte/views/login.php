@@ -70,10 +70,10 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="./views/forgot-password.php">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="./views/register.html" class="text-center">Register a new membership</a>
+        <a href="./views/register.php" class="text-center">Register a new membership</a>
       </p>
     </div>
     <!-- /.card-body -->
