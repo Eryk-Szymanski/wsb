@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Lis 2022, 09:42
+-- Czas generowania: 30 Lis 2022, 10:04
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -979,14 +979,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `city_id`, `name`, `surname`, `email`, `pass`, `birthday`, `created_at`) VALUES
-(1, 1, 'jan', 'nowak', 'j@n.com', '123', '2022-11-24', '2022-11-23 09:08:52'),
-(2, 1, 'eryk', 'szymanski', 'e@e.pl', '123', '2000-10-21', '2022-11-23 09:15:22'),
-(3, 2, 'jan', 'kowalski', 'jk@jk.com', '12345', '0000-00-00', '2022-11-23 09:22:23'),
-(6, 123, '213asd', 'asdsad', '123asd@o.pl', '123', '2133-03-12', '2022-11-30 07:33:34'),
-(10, 1, 'e', 'e', 'e@2e.pl', '1', '2133-03-12', '2022-11-30 08:50:33'),
-(12, 1, '1', '1', 's@s.pl', '1', '0000-00-00', '2022-11-30 08:54:31'),
-(20, 123, '123', '123', '123@123.pl', '123', '0000-00-00', '2022-11-30 09:09:21'),
-(21, 20, '123', '123', '123@1234.pl', '1', '0000-00-00', '2022-11-30 09:42:15');
+(1, 2, 'eryk', 'szymanski', 'e@e.pl', '123', '2022-10-21', '2022-11-30 10:04:15');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -1021,6 +1014,16 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
