@@ -74,13 +74,21 @@
           </div>
         </div>
 
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Miasto" name="city_id">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-city"></span>
-            </div>
-          </div>
+        <?php
+          require_once '../scripts/connect.php';
+          $sql = "SELECT * FROM `cities`";
+          $result = $mysqli->query($sql);
+          $city = $result->fetch_assoc();
+        ?>
+
+        <div class="form-group">
+          <select class="form-control select2 select2-hidden-accessible" name="city_id" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true">
+            <?php
+              while ($city = $result->fetch_assoc()) {
+                echo "<option value=\"$city[id]\">$city[city]</option>";
+              }
+            ?>
+          </select>
         </div>
 
         <div class="input-group mb-3">

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,57 @@
 
 </head>
 <body class="hold-transition login-page">
+  <?php
+    if (isset($_SESSION['success'])) {
+      // echo $_SESSION['success'];
+      echo <<< INFO
+      <div class="col-md-3">
+        <div class="card card-outline card-success">
+          <div class="card-header">
+            <h3 class="card-title">Komunikat</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+              </button>
+            </div>
+            <!-- /.card-tools -->
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            $_SESSION[success]
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+INFO;
+      unset($_SESSION['success']);
+    }
+
+    if (isset($_SESSION['error'])) {
+      // echo $_SESSION['error'];
+      echo <<< INFO
+      <div class="col-md-3">
+        <div class="card card-outline card-danger">
+          <div class="card-header">
+            <h3 class="card-title">Error</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+              </button>
+            </div>
+            <!-- /.card-tools -->
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            $_SESSION[error]
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+INFO;
+      unset($_SESSION['error']);
+    } 
+  ?>
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
