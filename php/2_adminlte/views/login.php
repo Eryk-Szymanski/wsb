@@ -79,9 +79,9 @@ INFO;
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="./AdminLTE/index3.html" method="post">
+      <form action="./scripts/login.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -89,7 +89,7 @@ INFO;
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="pass">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

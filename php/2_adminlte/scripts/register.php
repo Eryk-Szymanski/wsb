@@ -19,10 +19,11 @@
     }
 
     require_once 'connect.php';
-
+    
+    $pass = password_hash($_POST['pass1'], PASSWORD_ARGON2ID);  
     try {
         $stmt = $mysqli->prepare("INSERT INTO users(city_id, name, surname, email, pass, birthday) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssss", $_POST['city_id'], $_POST['name'], $_POST['surname'], $_POST['email1'], $_POST['pass1'], $_POST['birthday']);
+        $stmt->bind_param("isssss", $_POST['city_id'], $_POST['name'], $_POST['surname'], $_POST['email1'], $pass, $_POST['birthday']);
         $stmt->execute();
 
         if ($stmt->affected_rows == 1) {
